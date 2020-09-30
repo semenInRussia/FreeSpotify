@@ -8,5 +8,5 @@ git clone https://github.com/semenInRussia/FreeSpotify
 ## RUN
 ```
 python backend/manage.py runserver 5000
-python frontend/FreeSpotifyFronteEnd runserver 8000
+python frontend\FreeSpotifyFrontEnd\manage.py runserver 8000
 ```

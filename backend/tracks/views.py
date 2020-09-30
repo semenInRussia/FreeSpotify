@@ -10,10 +10,15 @@ spotify = Spotify()
 def get_track_view(request, artist, album, track):
     data = get_track_info(artist_name=artist, track_name=track, spotify=spotify)
 
-    return JsonResponse(data)
+    print(data)
+    assert data is not None
+
+    return JsonResponse(data, safe=False)
 
 
 def view_tracks_info(request, artist):
     data = get_top_music_info_by_approximate_artist_title(artist, spotify=spotify)
 
-    return JsonResponse(data)
+    assert data is not None
+
+    return JsonResponse(data, safe=False)

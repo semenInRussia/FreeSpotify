@@ -1,20 +1,26 @@
 # Free Spotify `NOT DONE`
 
 ## INSTALL
-Windows ```
+
+Windows 
+```
 git clone https://github.com/semenInRussia/FreeSpotify
 pip install -r requirements.txt
 ```
 
-Linux ```
+Linux 
+```
 git clone https://github.com/semenInRussia/FreeSpotify
 pip3 install -r requirements.txt
 ```
 
 ## RUN
-Windows```
+
+Windows
+```
 python backend\manage.py runserver 8000
 ```
-Linux```
+Linux
+```
 python3 backend\manage.py runserver 8000
 ```

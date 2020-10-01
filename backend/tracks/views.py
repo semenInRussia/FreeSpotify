@@ -10,7 +10,6 @@ spotify = Spotify()
 def get_track_view(request, artist, album, track):
     data = get_track_info(artist_name=artist, track_name=track, spotify=spotify)
 
-    print(data)
     assert data is not None
 
     return JsonResponse(data, safe=False)

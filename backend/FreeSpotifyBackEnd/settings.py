@@ -24,7 +24,6 @@ INSTALLED_APPS = [
     'corsheaders',
 
     'tracks',
-    "front",
 ]
 
 MIDDLEWARE = [
@@ -53,7 +52,7 @@ ROOT_URLCONF = 'FreeSpotifyBackEnd.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -20,8 +20,7 @@ def get_link_on_track(approximate_artist_name: str, approximate_track_name: str,
     return ""
 
 
-
-def get_link_on_album(artist_name: str, album_name: str) -> str:
+def get_link_on_album(artist_name: str, album_name: str, raise_exception=True) -> str:
     album_name = _delete_value_in_brackets(album_name)
 
     link_on_artist = get_link_on_artist(artist_name)
@@ -30,7 +29,10 @@ def get_link_on_album(artist_name: str, album_name: str) -> str:
     link_on_album = _find_link_on_album(html, album_name)
 
     if link_on_album is None:
-        raise NotFoundAlbumException
+        if raise_exception:
+            raise NotFoundAlbumException
+        else:
+            return None
 
     return link_on_album
 
@@ -97,6 +99,7 @@ def _get_rocknation_artist_link_by_html(html: str) -> str:
 
     return link
 
+
 # **************** get album ***************
 def _find_link_on_album(html: str, album_name: str) -> str:
     albums_links = _find_links_on_album(html)
@@ -106,6 +109,7 @@ def _find_link_on_album(html: str, album_name: str) -> str:
             url = base_url + url_for_rocknation
 
             return url
+
 
 def _delete_value_in_brackets(string: str) -> str:
     open_bracket = '('

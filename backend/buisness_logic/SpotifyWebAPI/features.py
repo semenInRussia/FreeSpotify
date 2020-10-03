@@ -3,7 +3,7 @@ import os
 
 import requests
 
-from buisness_logic.SpotifyWebAPI.core.exceptions import UndefinedErrorMessageException, InvalidClientException, \
+from backend.buisness_logic.SpotifyWebAPI.core.exceptions import InvalidClientException, UndefinedErrorMessageException, \
     NotValidTokenException, AccessTokenExpiredException
 
 version_api = 'v1'

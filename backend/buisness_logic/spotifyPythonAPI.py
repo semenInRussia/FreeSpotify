@@ -1,5 +1,5 @@
-from buisness_logic.SpotifyWebAPI.core.exceptions import NotResultSearchException
-from buisness_logic.SpotifyWebAPI.features import Spotify
+from backend.buisness_logic.SpotifyWebAPI.core.exceptions import NotResultSearchException
+from backend.buisness_logic.SpotifyWebAPI.features import Spotify
 
 _spotify = Spotify()
 
@@ -16,10 +16,12 @@ def get_track_info(artist_name: str, track_name: str, spotify: Spotify) -> dict:
 
     return first_track_info
 
+
 def get_artist_info(artist_name: str, spotify: Spotify) -> dict:
     artists_info = get_artists_ids_and_names(artist_name, spotify)
 
     return artists_info[0]
+
 
 def get_disc_number(artist_name, track_name, spotify: Spotify) -> int:
     return get_track_info(artist_name, track_name, spotify=spotify).get('disc_number')

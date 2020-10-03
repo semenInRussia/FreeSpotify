@@ -5,6 +5,8 @@ from buisness_logic.SpotifyWebAPI.features import Spotify
 from buisness_logic.spotifyPythonAPI import get_track_info, get_tracks_info, \
     get_top_music_info_by_approximate_artist_title
 
+from buisness_logic.publicFeatures import get_tracks_top
+
 spotify = Spotify()
 
 def get_track_view(request, artist, album, track):
@@ -16,7 +18,7 @@ def get_track_view(request, artist, album, track):
 
 
 def view_tracks_info(request, artist):
-    data = get_top_music_info_by_approximate_artist_title(artist, spotify=spotify)
+    data = get_tracks_top(artist, spotify=spotify)
 
     assert data is not None
 

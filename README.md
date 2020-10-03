@@ -1,5 +1,5 @@
 # Free Spotify `NOT DONE`
-
+![Python package](https://github.com/semenInRussia/FreeSpotify/workflows/Python%20package/badge.svg)
 ## INSTALL
 
 Windows 

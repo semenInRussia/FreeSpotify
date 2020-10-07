@@ -1,0 +1,31 @@
+{
+  "name": "free_spotify",
+  "version": "0.0.1",
+  "description": "free download tracks with spotify",
+  "main": "src/main.js",
+  "scripts": {
+    "serve": "node_modules/.bin/vue-cli-service serve --port=8000",
+    "build": "node_modules/.bin/vue-cli-service build",
+    "lint": "node_modules/.bin/vue-cli-service lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/semenInRussia/FreeSpotify.git"
+  },
+  "author": "semenInRussia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/semenInRussia/FreeSpotify/issues"
+  },
+  "homepage": "https://github.com/semenInRussia/FreeSpotify#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "vue": "^2.6.12",
+    "axios": "^0.20.0",
+    "vue-router": "^3.4.5"
+  },
+  "devDependencies": {
+    "@vue/cli-service": "^4.1.0",
+    "vue-template-compiler": "^2.6.10"
+  }
+}

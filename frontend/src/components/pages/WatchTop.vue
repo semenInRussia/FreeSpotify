@@ -1,11 +1,15 @@
 <template>
-  <h1>Hello world!!!!!!!!!!!!!!!!!</h1>
+  <div>
+      {{ tracks }}
+    <hr>
+  </div>
 </template>
 
 <script>
 import Layout from "@/Layout";
+import axios from "axios";
 
-const base_url = ``
+const base_url = `http://localhost:8000`
 const url = `${base_url}/api/tracks/top`
 
 export default {
@@ -23,7 +27,7 @@ export default {
   },
   mounted() {
     // set url
-    this.artist_url = url + this.artist_name
+    this.artist_url = url + "/" + this.artist_name
 
     axios
         .get(this.artist_url)

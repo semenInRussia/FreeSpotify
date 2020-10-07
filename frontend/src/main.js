@@ -6,5 +6,3 @@ new Vue({
     router,
     render: (h) => h(Layout),
 }).$mount("#app");
-
-console.log("OK...")

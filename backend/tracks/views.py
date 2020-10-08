@@ -1,4 +1,5 @@
-from django.http import JsonResponse
+import corsheaders
+from django.http import JsonResponse, HttpRequest
 
 # Create your views here.
 from buisness_logic.SpotifyWebAPI.features import Spotify
@@ -17,7 +18,7 @@ def get_track_view(request, artist, album, track):
     return JsonResponse(data, safe=False)
 
 
-def view_tracks_info(request, artist):
+def view_tracks_info(request: HttpRequest, artist):
     data = get_tracks_top(artist, spotify=spotify)
 
     assert data is not None

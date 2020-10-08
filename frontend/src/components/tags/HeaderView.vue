@@ -8,25 +8,27 @@
       </li>
     </ul>
 
+    <NavForm @update-top=""></NavForm>
 
-    <form class="nav__form">
-      <label>
-        <input placeholder="Search:" class="text-input">
-      </label>
-      <ButtonSubmit class="success-outline" value="Search"></ButtonSubmit>
-    </form>
   </nav>
 </template>
 
 <script>
-import ButtonSubmit from "./b-submit";
+import ButtonSubmit from "./ButtonSubmit";
 import TextInput from "@/components/tags/TextInput";
+import NavForm from "@/components/tags/NavForm";
 
 export default {
   name: "HeaderView",
   components: {
     ButtonSubmit,
-    TextInput
+    TextInput,
+    NavForm
+  },
+  methods: {
+    UpdateTop(artist_name) {
+      this.$emit('update-top', artist_name)
+    }
   }
 }
 </script>

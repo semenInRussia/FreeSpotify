@@ -16,17 +16,18 @@ export default {
             return state.tracks;
         },
     },
-    action: {
-        fetchTop(ctx, artist_name) {
+    actions: {
+        fetchTop(ctx, artist_name ) {
             let tracks;
-
             axios.get(getArtistUrl(artist_name))
-                 .then(response => (tracks = response));
-            ctx.commit("setTop")
+                 .then(response => (tracks = response))
+
+            ctx.commit("setTop", tracks)
         }
-    }
-    ,
+    },
     mutations: {
-        setTop: (state, tracks) => state.tracks_top = tracks
+        setTop(state, tracks) {
+            state.tracks_top = tracks
+        }
     }
 }

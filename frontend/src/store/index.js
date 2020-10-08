@@ -5,10 +5,9 @@ import Top from "./modules/Top";
 Vue.use(Vuex)
 
 
-const store = new Vuex.Store({
+export default new Vuex.Store({
     modules: {
         Top
     }
 });
 
-export default store

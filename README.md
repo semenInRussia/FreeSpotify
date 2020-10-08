@@ -1,5 +1,18 @@
 # Free Spotify `NOT DONE`
 ![Python package](https://github.com/semenInRussia/FreeSpotify/workflows/Python%20package/badge.svg)
+## WE ARE USE
+* on FRONTED
+  * Vue
+  * Vuex
+  * vue-roter
+  * axios
+* on BACKEND
+  * Django
+  * Corsheaders
+  * bs4
+  * requests
+
+
 ## INSTALL
 
 Windows 

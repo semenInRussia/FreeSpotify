@@ -18,16 +18,17 @@ export default {
     },
     actions: {
         fetchTop(ctx, artist_name ) {
-            let tracks;
             axios.get(getArtistUrl(artist_name))
-                 .then(response => (tracks = response))
-
-            ctx.commit("setTop", tracks)
+                 .then(response => {
+                     let tracks = response.data
+                     console.log(tracks)
+                     ctx.commit("setTop", tracks)
+                 })
         }
     },
     mutations: {
         setTop(state, tracks) {
-            state.tracks_top = tracks
+            state.tracks = tracks
         }
     }
 }

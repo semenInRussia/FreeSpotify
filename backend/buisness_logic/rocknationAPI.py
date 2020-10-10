@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from loguru import logger
 
 from backend.buisness_logic.SpotifyWebAPI.features import Spotify
 from backend.buisness_logic.core.exceptions import NotFoundAlbumException, NotFoundArtistException
@@ -27,9 +28,13 @@ def get_link_on_album_img_by_precise_album_name(artist_name: str = None, album_n
     if not link_on_album:
         link_on_album = get_link_on_album(artist_name, album_name)
 
-    soup = BeautifulSoup(link_on_album)
-    img = soup.select("#mp3 > p:nth-child(2) > img")
-    src = img.src
+    logger.info(f"link_on_album = {link_on_album}")
+
+    html = _get_html(link_on_album)
+    soup = BeautifulSoup(html)
+
+    img = soup.select_one("img[src^='/upload/images/albums/']")
+    src = img.get("src")
 
     url = base_url + src
 

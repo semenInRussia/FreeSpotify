@@ -11,12 +11,6 @@ const router = new VueRouter({
             component: () => import("./components/pages/WatchTop.vue"),
         },
         {
-            path: "/app",
-            name: "app",
-            meta: {},
-            component: () => import("./Layout")
-        },
-        {
             path: "*",
             name: "page404",
             meta: {},

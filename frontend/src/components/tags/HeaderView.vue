@@ -1,30 +1,52 @@
 <template>
-  <nav class="navbar">
-    <a class="navbar-brand" href="/">FreeSpotify</a>
+  <div id="nav">
+    <div class="ma-12 pa-12">
 
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="">TOP</a>
-      </li>
-    </ul>
+      <v-card>
+        <v-navigation-drawer
+            permanent
+            expand-on-hover
+            app
+            dark
+        >
 
-    <NavForm @update-top=""></NavForm>
+          <v-list>
+            <v-list-item link>
+              <v-list-item-content>
+                <v-list-item-title>FreeSpotify</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
 
-  </nav>
+          <v-divider></v-divider>
+
+          <v-list
+              nav
+              dense
+          >
+            <v-list-item link>
+              <v-list-item-icon>
+                <v-icon>mdi-folder</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>Top</v-list-item-content>
+            </v-list-item>
+          </v-list>
+        </v-navigation-drawer>
+      </v-card>
+    </div>
+  </div>
 </template>
 
 <script>
 import ButtonSubmit from "./ButtonSubmit";
-import TextInput from "@/components/tags/TextInput";
-import NavForm from "@/components/tags/NavForm";
+import Vuetify from "vuetify";
 
 export default {
   name: "HeaderView",
   components: {
     ButtonSubmit,
-    TextInput,
-    NavForm
   },
+  vuetify: new Vuetify(),
   methods: {
     UpdateTop(artist_name) {
       this.$emit('update-top', artist_name)

@@ -1,12 +1,17 @@
 <template>
-  <div>
-    <header-view></header-view>
-
-    <main>
-      <router-view>
-
-      </router-view>
-    </main>
+  <div id="app">
+    <v-app>
+      <header-view></header-view>
+      <v-main app>
+        <v-row
+            align="center"
+        >
+          <v-container>
+            <router-view></router-view>
+          </v-container>
+        </v-row>
+      </v-main>
+    </v-app>
   </div>
 </template>
 

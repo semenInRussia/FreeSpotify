@@ -1,16 +1,21 @@
 <template>
   <div>
-    <input type="text" v-model="artist_name">
-    <button @click="fetchTop(artist_name)">Search</button>
+    <form>
+      <v-text-field v-model="artist_name"></v-text-field>
+      <v-btn color="primary" @click="fetchTop(artist_name)">Search</v-btn>
+    </form>
 
-    <ul>
-      <li v-for="track in tracks">
-        <a :href="track.artist_link">{{ track.artist_name }}</a> <span>{{ track.name }}</span>
-        <br>
-        <a :href="track.album_link">{{ track.album_name }}</a> <span>{{ track.release_date }}</span>
-        <hr>
-      </li>
-    </ul>
+
+    <v-list v-for="track in tracks">
+      <v-list-item-title>
+        <a :href="track.artist_link">{{ track.top_number }} {{ track.artist_name}}</a>
+      </v-list-item-title>
+
+      <v-list-item-content>
+        <a :href="track.album_link">{{ track.album_name }}</a> {{ track.release_date }}
+      </v-list-item-content>
+      <v-divider></v-divider>
+    </v-list>
   </div>
 </template>
 
@@ -24,9 +29,6 @@ export default {
     return {
       artist_name: null
     }
-  },
-  mounted() {
-    this.fetchTop(this.artist_name)
   },
   methods: mapActions([`fetchTop`]),
   computed: mapGetters([`tracks`])

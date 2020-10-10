@@ -19,12 +19,9 @@ spotify_client_secret = "09ece004e71740da8f003ba333c7f887"
 class Spotify:
     """Object for work with spotify."""
 
-    def __init__(self, token: str = None):
+    def __init__(self):
         # Set token
-        if token:
-            self._token = token
-        else:
-            self._token = self._create_token()
+        self._token = self._create_token()
 
     def search(self, q: str, type_: str, marker: str = None, limit: int = 1, offset: int = 0) -> dict:
         """Search tracks or artist on Spotify"""

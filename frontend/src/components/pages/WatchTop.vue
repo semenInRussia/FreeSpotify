@@ -7,16 +7,19 @@
 
     <br>
 
-    <v-list v-for="track in tracks">
-      <v-list-item-title>{{ track.top_number }} | {{track.name }}</v-list-item-title>
-      <v-list-item-subtitle>
-        <a :href="track.artist_link">{{ track.artist_name}}</a>
-      </v-list-item-subtitle>
+    <v-list>
+      <v-list-item v-for="track in tracks">
+        <v-list-item-title>{{ track.top_number }} | {{ track.name }}</v-list-item-title>
+        <v-list-item-subtitle>
+          <a :href="track.artist_link">{{ track.artist_name }}</a>
+        </v-list-item-subtitle>
 
-      <v-list-item-content>
-        <a :href="track.album_link">{{ track.album_name }}</a> {{ track.release_date }}
-      </v-list-item-content>
-      <v-divider></v-divider>
+        <v-list-item-subtitle>
+           <a :href="track.album_link">{{ track.album_name }}</a> {{ track.release_date }}
+        </v-list-item-subtitle>
+
+        <v-divider></v-divider>
+      </v-list-item>
     </v-list>
   </div>
 </template>

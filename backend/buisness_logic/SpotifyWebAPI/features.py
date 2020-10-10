@@ -19,9 +19,9 @@ spotify_client_secret = "09ece004e71740da8f003ba333c7f887"
 class Spotify:
     """Object for work with spotify."""
 
-    def __init__(self):
+    def __init__(self, token: str = None):
         # Set token
-        self._token = self._create_token()
+        self._set_new_token()
 
     def search(self, q: str, type_: str, marker: str = None, limit: int = 1, offset: int = 0) -> dict:
         """Search tracks or artist on Spotify"""
@@ -73,6 +73,9 @@ class Spotify:
         else:
             return token
 
+    def _set_new_token(self):
+        self._token = self._create_token()
+
     @staticmethod
     def _get_response(url: str, params: dict = None, headers: dict = None, data: dict = None) -> requests.Response:
         return requests.get(url, params=params, headers=headers, data=data)
@@ -115,6 +118,8 @@ class Spotify:
 
     def _post_response_JSON_with_link_spotify(self, second_part_of_links: str, params: dict = None,
                                               data: dict = None) -> dict:
+        self._set_new_token()
+
         url = base_url + second_part_of_links
 
         headers = {

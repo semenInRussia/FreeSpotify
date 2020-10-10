@@ -24,7 +24,7 @@
               nav
               dense
           >
-            <v-list-item link href="/">
+            <v-list-item link href="/top">
               <v-list-item-icon>
                 <v-icon>mdi-folder</v-icon>
               </v-list-item-icon>
@@ -38,14 +38,11 @@
 </template>
 
 <script>
-import ButtonSubmit from "./ButtonSubmit";
+
 import Vuetify from "vuetify";
 
 export default {
   name: "HeaderView",
-  components: {
-    ButtonSubmit,
-  },
   vuetify: new Vuetify(),
   methods: {
     UpdateTop(artist_name) {

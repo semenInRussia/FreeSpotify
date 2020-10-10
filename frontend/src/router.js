@@ -6,6 +6,12 @@ const router = new VueRouter({
     routes: [
         {
             path: "/",
+            name: "index",
+            meta: {},
+            component: () => import("./components/pages/index.vue")
+        },
+        {
+            path: "/top",
             name: "top",
             meta: {},
             component: () => import("./components/pages/WatchTop.vue"),

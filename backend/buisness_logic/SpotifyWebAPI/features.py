@@ -1,16 +1,19 @@
 import base64
 import os
 
+import loguru
 import requests
+from loguru import logger
 
 from backend.buisness_logic.SpotifyWebAPI.core.exceptions import InvalidClientException, UndefinedErrorMessageException, \
     NotValidTokenException, AccessTokenExpiredException
+from backend.core.features.loguru import loguru_info
 
 version_api = 'v1'
 base_url = f"https://api.spotify.com/{version_api}/"
 
 spotify_client_id = "1878579b79fd4d30b106622791eaa706"
-spotify_client_secret = "006f8a58bada4b5ab4c0608fc1725c43"
+spotify_client_secret = "09ece004e71740da8f003ba333c7f887"
 
 
 class Spotify:
@@ -60,6 +63,8 @@ class Spotify:
         data['grant_type'] = "client_credentials"
 
         auth_json_data = self._post_response_JSON(url, headers=headers, data=data)
+
+        logger.debug(auth_json_data)
 
         try:
             token = auth_json_data['access_token']

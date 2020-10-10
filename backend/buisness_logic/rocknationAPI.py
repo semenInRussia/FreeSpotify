@@ -32,7 +32,7 @@ def get_link_on_album(artist_name: str, album_name: str, raise_exception=True) -
         if raise_exception:
             raise NotFoundAlbumException
         else:
-            return None
+            return
 
     return link_on_album
 
@@ -77,7 +77,6 @@ def _get_html_search_artist(name: str) -> str:
     request = _post_on_rocknation_search(name)
 
     return request.text
-
 
 def _find_artist_elements(html: str):
     bs = BeautifulSoup(html, features="html.parser")

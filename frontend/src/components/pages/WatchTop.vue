@@ -1,21 +1,23 @@
 <template>
   <div>
-    <form>
+    <form @submit.prevent="updateTop()">
       <v-text-field v-model="artist_name"></v-text-field>
-      <v-btn color="primary" @click="fetchTop(artist_name)">Search</v-btn>
+      <v-btn color="primary" type="submit">Search</v-btn>
     </form>
 
     <br>
+    <v-progress-linear v-if="is_show_loader" :value="value"></v-progress-linear>
+    <br>
 
     <v-list>
-      <v-list-item v-for="track in tracks">
+      <v-list-item v-for="track in tracks" :key="track.top_number">
         <v-list-item-title>{{ track.top_number }} | {{ track.name }}</v-list-item-title>
         <v-list-item-subtitle>
           <a :href="track.artist_link">{{ track.artist_name }}</a>
         </v-list-item-subtitle>
 
         <v-list-item-subtitle>
-           <a :href="track.album_link">{{ track.album_name }}</a> {{ track.release_date }}
+          <a :href="track.album_link">{{ track.album_name }}</a> {{ track.release_date }}
         </v-list-item-subtitle>
 
         <v-divider></v-divider>
@@ -32,10 +34,26 @@ export default {
   name: "WatchTop",
   data: () => {
     return {
-      artist_name: null
+      artist_name: null,
+      is_show_loader: true,
+      value: 15
     }
   },
-  methods: mapActions([`fetchTop`]),
+  methods: {
+    ...mapActions([`fetchTop`]),
+
+    updateTop() {
+      this.showLoader()
+      this.fetchTop(this.artist_name)
+      this.hideLoader()
+    },
+    showLoader() {
+      this.is_show_loader = true
+    },
+    hideLoader() {
+      this.is_show_loader = false
+    }
+  },
   computed: mapGetters([`tracks`])
 
 }

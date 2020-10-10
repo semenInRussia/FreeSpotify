@@ -5,11 +5,13 @@
       <v-btn color="primary" @click="fetchTop(artist_name)">Search</v-btn>
     </form>
 
+    <br>
 
     <v-list v-for="track in tracks">
-      <v-list-item-title>
-        <a :href="track.artist_link">{{ track.top_number }} {{ track.artist_name}}</a>
-      </v-list-item-title>
+      <v-list-item-title>{{ track.top_number }} | {{track.name }}</v-list-item-title>
+      <v-list-item-subtitle>
+        <a :href="track.artist_link">{{ track.artist_name}}</a>
+      </v-list-item-subtitle>
 
       <v-list-item-content>
         <a :href="track.album_link">{{ track.album_name }}</a> {{ track.release_date }}

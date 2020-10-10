@@ -11,7 +11,7 @@
         >
 
           <v-list>
-            <v-list-item link>
+            <v-list-item link href="/">
               <v-list-item-content>
                 <v-list-item-title>FreeSpotify</v-list-item-title>
               </v-list-item-content>
@@ -24,7 +24,7 @@
               nav
               dense
           >
-            <v-list-item link>
+            <v-list-item link href="/">
               <v-list-item-icon>
                 <v-icon>mdi-folder</v-icon>
               </v-list-item-icon>

@@ -12,6 +12,30 @@ headers = {
 }
 
 
+def get_link_on_album_img_by_precise_album_name(artist_name: str = None, album_name: str = None,
+                                                link_on_album: str = None):
+    """
+    Get link on album image,
+    You have to give  (artist & album  name) or (link_on_album)
+    :param artist_name: precise artist name
+    :param album_name: precise album name
+    :param link_on_album:
+    :return: link on album image
+    """
+    assert (artist_name and album_name) or link_on_album, "You have to give  (artist & album  name) or (link_on_album)!"
+
+    if not link_on_album:
+        link_on_album = get_link_on_album(artist_name, album_name)
+
+    soup = BeautifulSoup(link_on_album)
+    img = soup.select("#mp3 > p:nth-child(2) > img")
+    src = img.src
+
+    url = base_url + src
+
+    return url
+
+
 def get_link_on_artist(artist_name: str) -> str:
     return _get_rocknation_artist_link(artist_name)
 
@@ -77,6 +101,7 @@ def _get_html_search_artist(name: str) -> str:
     request = _post_on_rocknation_search(name)
 
     return request.text
+
 
 def _find_artist_elements(html: str):
     bs = BeautifulSoup(html, features="html.parser")

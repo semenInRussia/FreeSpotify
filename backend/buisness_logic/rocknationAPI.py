@@ -13,8 +13,8 @@ headers = {
 }
 
 
-def get_link_on_album_img_by_precise_album_name(artist_name: str = None, album_name: str = None,
-                                                link_on_album: str = None):
+def get_link_on_album_img(artist_name: str = None, album_name: str = None,
+                          link_on_album: str = None):
     """
     Get link on album image,
     You have to give  (artist & album  name) or (link_on_album)

@@ -14,3 +14,4 @@ def testGetTracksTop():
 
     assert top[0].get("album_link")
     assert top[0].get("artist_link")
+    assert top[0].get("album_img_link")

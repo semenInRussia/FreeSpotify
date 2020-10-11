@@ -20,6 +20,9 @@
           <a :href="track.album_link">{{ track.album_name }}</a> {{ track.release_date }}
         </v-list-item-subtitle>
 
+        <v-list-item-avatar tile>
+          <img :src="track.album_img_link" alt="ALBUM">
+        </v-list-item-avatar>
         <v-divider></v-divider>
       </v-list-item>
     </v-list>

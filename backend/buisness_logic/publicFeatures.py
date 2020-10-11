@@ -1,3 +1,5 @@
+from loguru import logger
+
 from backend.buisness_logic.SpotifyWebAPI.features import Spotify
 from backend.buisness_logic.core.exceptions import NotFoundAlbumException, NotFoundArtistException
 from backend.buisness_logic.rocknationAPI import get_link_on_album, get_link_on_artist, get_link_on_album_img
@@ -6,6 +8,8 @@ from backend.buisness_logic.spotifyPythonAPI import get_top_music_info, get_top_
 
 def get_tracks_top(artist_name, spotify: Spotify) -> list:
     tracks_info = get_top_music_info_by_approximate_artist_title(artist_name, spotify=spotify)
+
+    logger.debug(f"tracks_info = {tracks_info}")
 
     cash = {
         'links_on_album': {},
@@ -22,9 +26,16 @@ def get_tracks_top(artist_name, spotify: Spotify) -> list:
                                              get_default_value=lambda key: get_link_on_album(artist_name,
                                                                                              album_name,
                                                                                              raise_exception=False))
-        link_on_album_img = _get_value_from_cash(cash['links_on_album'], key=album_name,
-                                                 get_default_value=lambda key: get_link_on_album_img(
-                                                     link_on_album=link_on_album))
+        logger.debug(f"link_on_album = {link_on_album}")
+
+        def get_default_value(key):
+            try:
+                return get_link_on_album_img(link_on_album=link_on_album)
+            except AssertionError:
+                return None
+
+        link_on_album_img = _get_value_from_cash(cash['links_on_album_img'], key=album_name,
+                                                 get_default_value=get_default_value)
 
         # update data
         track["album_link"] = link_on_album

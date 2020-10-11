@@ -1,3 +1,5 @@
+from typing import Optional
+
 import requests
 from bs4 import BeautifulSoup
 from loguru import logger
@@ -23,6 +25,7 @@ def get_link_on_album_img(artist_name: str = None, album_name: str = None,
     :param link_on_album:
     :return: link on album image
     """
+    logger.debug(f"(artist_name and album_name) = {(artist_name and album_name)}; link_on_album = {link_on_album}")
     assert (artist_name and album_name) or link_on_album, "You have to give  (artist & album  name) or (link_on_album)!"
 
     if not link_on_album:
@@ -30,7 +33,11 @@ def get_link_on_album_img(artist_name: str = None, album_name: str = None,
 
     logger.info(f"link_on_album = {link_on_album}")
 
-    html = _get_html(link_on_album)
+    try:
+        html = _get_html(link_on_album)
+    except requests.exceptions.MissingSchema:
+        raise NotFoundAlbumException
+
     soup = BeautifulSoup(html)
 
     img = soup.select_one("img[src^='/upload/images/albums/']")
@@ -49,8 +56,11 @@ def get_link_on_track(approximate_artist_name: str, approximate_track_name: str,
     return ""
 
 
-def get_link_on_album(artist_name: str, album_name: str, raise_exception=True) -> str:
-    album_name = _delete_value_in_brackets(album_name)
+def get_link_on_album(artist_name: str, album_name: str, raise_exception=True) -> Optional[str]:
+    try:
+        album_name = _delete_value_in_brackets(album_name)
+    except AttributeError:
+        return
 
     link_on_artist = get_link_on_artist(artist_name)
 

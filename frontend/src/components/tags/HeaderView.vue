@@ -7,7 +7,6 @@
             permanent
             expand-on-hover
             app
-            dark
         >
 
           <v-list>

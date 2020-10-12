@@ -6,7 +6,7 @@
     </form>
 
     <br>
-    <v-progress-linear v-if="is_show_loader" :value="value"></v-progress-linear>
+    <v-progress-linear v-if="loading" :value="value"></v-progress-linear>
     <br>
 
     <v-list>
@@ -38,7 +38,6 @@ export default {
   data: () => {
     return {
       artist_name: null,
-      is_show_loader: true,
       value: 15
     }
   },
@@ -46,18 +45,10 @@ export default {
     ...mapActions([`fetchTop`]),
 
     updateTop() {
-      this.showLoader()
       this.fetchTop(this.artist_name)
-      this.hideLoader()
     },
-    showLoader() {
-      this.is_show_loader = true
-    },
-    hideLoader() {
-      this.is_show_loader = false
-    }
   },
-  computed: mapGetters([`tracks`])
+  computed: mapGetters([`tracks`, `loading`])
 
 }
 </script>

@@ -44,8 +44,9 @@ CORS_ALLOW_HEADERS = (
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'tracks.middleware.cors.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
+    'FreeSpotifyBackEnd.middleware.except_errors.ExceptErrors',
 
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

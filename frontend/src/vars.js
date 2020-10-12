@@ -1,1 +1,8 @@
-const axios_defaults_baseURL = "http://localhost:8000";
+const axios_config = {
+    onUploadProgress: function (progressEvent) {
+        let percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
+        console.log(percentCompleted)
+    }
+}
+
+var dark = false;

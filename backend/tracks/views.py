@@ -8,6 +8,8 @@ from buisness_logic.spotifyPythonAPI import get_track_info, get_tracks_info, \
 
 from buisness_logic.publicFeatures import get_tracks_top
 
+from buisness_logic.core.exceptions import NotFoundArtistException
+
 spotify = Spotify()
 
 def get_track_view(request, artist, album, track):
@@ -19,7 +21,10 @@ def get_track_view(request, artist, album, track):
 
 
 def view_tracks_info(request: HttpRequest, artist):
-    data = get_tracks_top(artist, spotify=spotify)
+    try:
+        data = get_tracks_top(artist, spotify=spotify)
+    except NotFoundArtistException:
+        raise NotFoundArtistException
 
     assert data is not None
 

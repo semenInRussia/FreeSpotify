@@ -15,18 +15,14 @@ class ExceptErrors:
         response = self.get_response(request)
         return response
 
+    def process_exception(self, request: HttpRequest, exception: Exception):
+        logger.warning(f"Exception {exception.__class__.__name__} was called!")
 
-def process_exception(self, request: HttpRequest, exception: Exception):
-    logger.warning(f"Exception {exception.__class__.__name__} was called!")
-    print("*********************")
-    try:
-        raise exception
-    except (NotFoundArtistException, NotFoundAlbumException):
         logger.warning(f"Exception {exception.__class__.__name__} was called!")
         error_description = exception.message
         error_name = exception.__class__.__name__
 
-    return JsonResponse({
-        "error_description": error_description,
-        "error_name": error_name
-    })
+        return JsonResponse({
+            "error_description": error_description,
+            "error_name": error_name
+        })

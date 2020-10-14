@@ -1,6 +1,6 @@
-class NotFoundAlbumException(BaseException):
-    pass
+class NotFoundAlbumException(Exception):
+    message = "Album don't find."
 
 
-class NotFoundArtistException(BaseException):
-    pass
+class NotFoundArtistException(Exception):
+    message = "Artist don't find."

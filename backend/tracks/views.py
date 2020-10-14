@@ -25,4 +25,4 @@ def get_track_view(request, artist, album, track):
 def view_tracks_info(request: HttpRequest, artist):
     data = get_tracks_top(artist, spotify=spotify)
 
-    return JsonResponse(data)
+    return JsonResponse(data, safe=False)

@@ -8,15 +8,14 @@
             expand-on-hover
             app
         >
-
           <v-list>
             <v-list-item link href="/">
-              <v-list-item-content>
-                <v-list-item-title>FreeSpotify</v-list-item-title>
-              </v-list-item-content>
+              <v-list-item-icon>
+                <v-icon>fas fa-music</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>FreeSpotify</v-list-item-content>
             </v-list-item>
           </v-list>
-
           <v-divider></v-divider>
 
           <v-list
@@ -25,7 +24,7 @@
           >
             <v-list-item link href="/top">
               <v-list-item-icon>
-                <v-icon>mdi-folder</v-icon>
+                <v-icon>fas fa-list</v-icon>
               </v-list-item-icon>
               <v-list-item-content>Top</v-list-item-content>
             </v-list-item>

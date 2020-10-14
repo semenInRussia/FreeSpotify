@@ -1,5 +1,8 @@
 <template>
   <div id="app" class="main">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+
     <v-app>
       <header-view></header-view>
       <v-main>
@@ -7,7 +10,7 @@
             align="center"
         >
           <v-container>
-            <v-card elevation="12" :loading="loading">
+            <v-card elevation="12" class="main-card" :loading="loading">
               <router-view></router-view>
             </v-card>
           </v-container>
@@ -45,6 +48,6 @@ body {
 }
 
 .main-card {
-  margin: 5px;
+  padding: 10px;
 }
 </style>

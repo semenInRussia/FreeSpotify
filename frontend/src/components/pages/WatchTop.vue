@@ -1,5 +1,16 @@
 <template>
   <div>
+    <v-alert
+        color="red"
+        outlined
+        prominent
+        text
+        type="error"
+
+        v-if="tracks.error_name"
+    >
+      {{ tracks.error_description }}
+    </v-alert>
     <form @submit.prevent="updateTop()">
       <v-text-field v-model="artist_name"></v-text-field>
       <v-btn color="primary" type="submit">Search</v-btn>
@@ -9,7 +20,7 @@
     <v-progress-linear v-if="loading" :value="value"></v-progress-linear>
     <br>
 
-    <v-list>
+    <v-list v-if="!tracks.error_name">
       <v-list-item v-for="track in tracks" :key="track.top_number">
         <v-list-item-title>{{ track.top_number }} | {{ track.name }}</v-list-item-title>
         <v-list-item-subtitle>

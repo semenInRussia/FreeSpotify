@@ -10,7 +10,7 @@
             align="center"
         >
           <v-container>
-            <v-card elevation="12" class="main-card" :loading="loading">
+            <v-card elevation="12" class="main-card">
               <router-view></router-view>
             </v-card>
           </v-container>
@@ -28,11 +28,6 @@ export default {
   components: {
     HeaderView
   },
-  data() {
-    return {
-      loading: false
-    }
-  }
 }
 </script>
 

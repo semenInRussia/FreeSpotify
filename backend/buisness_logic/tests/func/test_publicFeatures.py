@@ -10,7 +10,7 @@ spotify = Spotify()
 def testGetTracksTop():
     top = get_tracks_top(artist_name, spotify=spotify)
 
-    _assert_is_public_track_top
+    _assert_is_public_track_top(top)
 
 def _assert_is_public_track_top(top: list):
     _assert_is_track_top(top)
